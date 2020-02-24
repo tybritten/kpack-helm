@@ -1,0 +1,43 @@
+# Default values for kpack.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+clusterbuilder:
+  name: default
+  image: cloudfoundry/cnb:bionic
+
+secrets:
+  registries:
+#    - name: gcr
+#      address: us.gcr.io
+#      type: gcr  # can be gcr or docker
+#      username: #leave blank if gcr
+#      password: #leave blank if gcr
+#      json_file: secrets/secret.json #filename for json credentials for gcr put in the secrets folder, leave blank if docker
+#    - name: dockerhub
+#      address: docker.io
+#      type: docker
+#      username: user
+#      password: pass
+#  git:
+#    - name: github
+#      type: ssh #basic,ssh,token
+#      username: #username for basic, token for token
+#      password: #required for basic only
+#      ssh_privatekey: secrets/private_key #file with private key for ssh, put in the secrets folder
+
+images:
+#  git:
+#  - name: petclinic
+#    source: "https://github.com/tybritten-org/spring-petclinic.git" #The git repository url. For now, only https repositories are supported.
+#    revision: "master" #The git revision to use. This value may be a commit sha, branch name, or tag.
+#    # subPath: # optional subpath to code
+#    tag:  #tag for container
+#  blob:  
+#  - name: blobexample
+#    source: # direct link to artifact (jar file, etc) 
+#    # subPath: # optional subpath to code
+#    tag: #tag for container

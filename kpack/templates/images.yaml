@@ -1,0 +1,40 @@
+{{ $root := . }}
+{{- range .Values.images.git }}
+apiVersion: build.pivotal.io/v1alpha1
+kind: Image
+metadata:
+  name: {{ .name }}-image
+spec:
+  tag: {{ .tag }}
+  serviceAccount: {{ include "kpack.serviceAccountName" $root }}
+  builder:
+    name: {{ $root.Values.clusterbuilder.name }}
+    kind: ClusterBuilder
+  source:
+    git:
+      url: {{ .source | quote}}
+      revision: {{ .revision | quote}}
+    {{- if .subPath }}
+    subPath: {{ .subPath | quote}}
+    {{- end }}
+---
+{{- end }}
+{{- range .Values.images.blob }}
+apiVersion: build.pivotal.io/v1alpha1
+kind: Image
+metadata:
+  name: {{ .name }}-image
+spec:
+  tag: {{ .tag }}
+  serviceAccount: {{ include "kpack.serviceAccountName" $root }}
+  builder:
+    name: {{ $root.Values.clusterbuilder.name }}
+    kind: ClusterBuilder
+  source:
+    blob:
+      url: {{ .source | quote}}
+    {{- if .subPath }}
+    subPath: {{ .subPath | quote }}
+    {{- end }}
+---
+{{- end }}
