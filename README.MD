@@ -16,7 +16,7 @@ To install the chart with the release name `my-release`:
 
 ```bash
 $ git clone https://github.com/tybritten/kpack-helm.git
-$ helm install --name my-release kpack-helm/kpack
+$ helm install my-release kpack-helm/kpack
 ```
 
 Ensure that the kpack controller & webhook have a status of `Running` using  `kubectl get`.   
