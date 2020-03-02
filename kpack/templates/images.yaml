@@ -1,4 +1,5 @@
 {{ $root := . }}
+{{- if .Values.images -}}
 {{- range .Values.images.git }}
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
@@ -19,6 +20,7 @@ spec:
     {{- end }}
 ---
 {{- end }}
+
 {{- range .Values.images.blob }}
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
@@ -37,4 +39,5 @@ spec:
     subPath: {{ .subPath | quote }}
     {{- end }}
 ---
+{{- end }}
 {{- end }}
