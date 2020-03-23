@@ -25,7 +25,7 @@ Ensure that the kpack controller & webhook have a status of `Running` using  `ku
 $ kubectl get pods --namespace kpack --watch
 ```
 
-## Deleting the Charts
+## Deleting the Release
 
 Delete the Helm deployment as normal
 
@@ -36,9 +36,9 @@ $ helm delete my-release
 *Note:* This Chart includes CRDs which Helm3 will not delete automatically. To remove these manually, type:
 
 ```bash
-$ kubectl delete -f kpack/crds/release-0.0.6.yaml
+$ kubectl delete -f kpack/crds/release-0.0.7.yaml
 ```
-
+Since Helm cannot upgrade CRDs, you must Delete the release and the CRDs using this command before installing the new version.
 
 ## Configuration
 
